@@ -5,7 +5,11 @@ const pSchema=mongoose.Schema({
     userId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'user'
-    }
+    },
+    likes:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'user'
+    }]
 })
 
 module.exports=mongoose.model('post',pSchema);

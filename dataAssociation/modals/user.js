@@ -12,7 +12,11 @@ const uSchema=mongoose.Schema({
             type:mongoose.Schema.Types.ObjectId,
             ref:'post'
         }
-    ]
+    ],
+    profile:{
+        type:String,
+        default:"default.png"
+    }
 })
 
 module.exports=mongoose.model("user",uSchema);

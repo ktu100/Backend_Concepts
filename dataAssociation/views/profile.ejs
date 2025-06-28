@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome <%=user.username%></h1>
+    <img src="./images/<%=user.profile%>">
+    <a href="http://localhost:3000/logout">Logout</a>
+    <h3>Create Posts</h3>
+    <form action="/create/post" method="POST">
+        <textarea placeholder="Enter Your post" name="post"></textarea>
+        <input type="submit" value="create post">
+    </form>
+    <h3>Your Posts</h3>
+    <ul>
+        
+            <%user.posts.forEach((val)=>{%>
+                <li>
+                <h4><%=user.username%></h4>
+                <p><%=val.content%></p>
+                 <small><%=val.likes.length%> Likes</small><br> 
+                <a href="/edit/<%=val._id%>">Edit</a> 
+                
+                <a href="/like/<%=val._id%>">
+                    <%= val.likes.indexOf(user._id)===-1 ? "Like" : "UnLike" %>
+                </a>
+                </li>
+            <%})%>
+        
+    </ul>
+</body>
+</html>
